@@ -16,6 +16,8 @@ narrator:  Deutsch Female
 
 Willkommen zurück im eLearning-System *eLab*.
 
+**Für diese Aufgabe haben wir die Kurse 1 - PKeS Kurs A und 1 - PKeS Kurs B erstellt. Ihr habt eine E-Mail von uns erhalten, der ihr eure Kurszugehörigkeit entnehmen könnt.**
+
 --{{1}}--
 Da ihr euch während der letzten Aufgabe sowohl mit dem System, als auch mit dem Arbeitsablauf vertraut machen konntet, wird es in dieser Aufgabe darum gehen, tiefer in die Programmierung eingebetteter Systeme einzudringen. 
 

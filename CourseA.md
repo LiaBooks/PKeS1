@@ -112,16 +112,9 @@ Wie bereits erwähnt, besteht das Display aus drei eigenständigen 8-Segment-Anz
 
 --{{3}}--
 Um deren korrekte Ansteuerung zu verstehen, solltet ihr den Datenfluss zwischen dem Mikrocontroller und den 8-Segement-Anzeigen verstehen.
-[](Begin Remove)
-Dazu solltet ihr den [Schaltbelegungsplan](https://github.com/liaScript/PKeS0/blob/master/materials/robubot_stud.pdf?raw=true) eingehend studieren. 
-Hilfreich ist es, die jeweiligen Ein- und Ausgänge der Komponenten *gedanklich* miteinander zu verbinden. Ihr könnt dazu bei den Ausgängen des Mikrocontrollers beginnen und euch bis zum Anschluss jedes einzelnen 8-Segment-Displays vorarbeiten, oder den Weg umgekehrt gehen. Beantwortet für euch die Frage: Durch welche Leiter muss ein einzelnes Bit geleitet werden, um schließlich ein einzelnes Segment eines bestimmten Displays ein- oder auszuschalten?
-[](End Remove)
 
 --{{4}}--
 Eine zentrale Rolle im Datenfluss nehmen die [Shift-Register](https://www.sparkfun.com/datasheets/IC/SN74HC595.pdf) ein. Daher solltet ihr diese eingehend studieren.
-[](Begin Remove)
-Wie funktionieren Shift-Register? Wie sind unsere verschaltet und was muss daher bei der Kommunikation mit ihnen (auch zeitlich) beachtet werden?
-[](End Remove)
 
 --{{5}}--
 Nachdem nun die theoretischen Fragen zu den von dieser Aufgabe betroffenen Bauteilen geklärt sein sollten, können wir mit der Implementierung beginnen. 
@@ -129,15 +122,9 @@ Wie schon angedeutet, soll die in `Display.h` deklariert API implementiert werde
 
 --{{6}}--
 Zunächst soll die Funktion `initDisplay()` implementiert werden. 
-[](Begin Remove)
-Darin müssen die entsprechenden PINs, an denen die 8-Segment-Anzeigen angeschlossen sind, als Ausgänge konfiguriert werden. Außerdem soll das Display mit einem *default*-Wert gefüllt werden um mögliche, zufällige Ausgaben zu löschen.
-[](End Remove)
 
 --{{7}}--
 Zu letzt soll eine grundlegende Funktionalität (`writeToDisplay(uint8_t data[3])`) zum Ausgeben von drei Byte implementiert werden. 
-[](Begin Remove)
-Nehmt dabei an, dass die bits der drei Werte des Arrays `data` bereits die richtige Bitreihenfolge beachten. Um eure Funktion zu testen, könnt ihr ein Array mit dem Inhalt `{0b01000010, 0b01000010, 0b01000010}` oder `{0b00011000, 0b00011000, 0b00011000}` übergeben, um eine 1 auszugeben. 
-[](End Remove)
 
 **Ziel:**
 
@@ -148,23 +135,10 @@ Das Ziel in dieser Aufgabe ist es, den Datenfluss, der zur Ansteuerung des Displ
 
 1. Verständniss des Datenflusses. 
 
-   [](Begin Remove)
-   * Wie wird ein einzelnes Segment angesteuert?
-   * Zusätzlich solltet ihr das [Datenblatt des Displays](http://www.kingbrightusa.com/images/catalog/SPEC/SA52-11SRWA.pdf) studieren um zu verstehen, wie die Eingänge des Displays den einzelnen LEDs zugeordnet sind.
-   [](End Remove)
 
 2. Implementierung der Funktion `initDisplay()`
-   [](Begin Remove)
-   * Welche PINs müssen als Ausgänge definiert werden?
-   * Wie können wir einen *default*-Wert, z.B.: '===', in die Shift-Register übertragen?
-   * Wodurch können wir die Anzeige der Werte auf dem Display veranlassen?
-   [](End Remove)
 
 3. Implementierung der Funktion `writeToDisplay(uint8_t data[3])`
-   [](Begin Remove)
-   * Übertragt die drei Byte des Arrays in die Shift-Register und zeigt die Werte auf dem Display an.
-   * Wie können wir die Funktionen, die wir für `initDispaly()` bereits implementiert haben, am effizientesten wiederverwenden?
-   [](End Remove)
 
 ## Aufgabe 1.2 
 
@@ -186,13 +160,7 @@ Vervollständigt die Implementierung der API in dem ihr die Funktionen `writeVal
 
 1. Implementiert eine Konvertierung von `int` zur Bitrepräsentation der Ganzzahl entsprechend der Ansteuerung des Displays
 
-   1. (optional) Konvertiert die Zahl zunächst in eine Standardrepräsentation wie sie zum Beispiel [hier](https://en.wikipedia.org/wiki/Seven-segment_display) vorgestellt wird. [](Begin Remove)
-   2. Generiert eine Bitdarstellung in `uint8_t` zur Übergabe an die Funktion `writeToDisplay`. [](End Remove)
 2. Implementiert eine Konvertierung von `float` zur Bitrepräsentation der Gleitkommazahl entsprechend der Ansteuerung des Displays.
-   [](Begin Remove)
-   * Achtet auf den Dezimal-Punkt!
-   * Könnt ihr die Implementierung für die Ganzzahlen möglicherweise wiederverwenden?
-   [](End Remove)
 
 
 ## Aufgabe 1.3
@@ -205,9 +173,6 @@ Wir haben euch bereits einen Slider vorgegeben, durch den ihr Werte in dem Berei
 
 --{{3}}--
 Da wir allerdings auch unsere Ganzzahl-Implementierung der API testen möchten, solltet ihr in einem ersten Schritt dem Arduinoview-Interface noch eine CheckBox hinzufügen. Durch die soll es möglich sein, zwischen der `int` und der `float`-Darstellung dynamisch zu wechseln.
-[](Begin Remove)
-Tipp: ihr könnt zunächst einen Button, wie in der Aufgabe zuvor, verwenden um zwischen der `int` und `float`-Darstellung zu wechseln, bevor ihr den Button durch eine CheckBox ersetzt.
-[](End Remove)
 
 --{{4}}--
 In dem finalen, zweiten Schritt könnt ihr die durch die Funktion `CallbackSL` übermittelten Werte in `int` bzw. `float`-Datentypen konvertieren und sie mittels den Funktionen `writeValueToDisplay(int value)` und `writeValueToDisplay(float value)` darstellen.
@@ -280,6 +245,56 @@ Welches Muster wird auf dem Display dargestellt, wenn die drei Shift-Register di
 [( )] 555
 [( )] 666
 
+## Fragebogen
+Inwiefern stimmen Sie folgenden Aussagen zur Arbeit mit dem RemoteLab zu?
+Die Aufgabe, die mit dem RemoteLab zu bearbeiten, ...
 
+[(:gar nicht)(:2)(:3)(:4)(:voll und ganz)]
+    [                                                  ] war interessant.
+    [                                                  ] hat mir Spaß gemacht.
+    [                                                  ] hat mich neugierig auf die weitere Beschäftigung mit den Inhalten der LV gemacht.
+    [                                                  ] hat mich motiviert, mich mit den Inhalten der LV zu beschäftigen.
+    [                                                  ] hat mir gefallen.
+	[                                                  ] Solche Aufgaben würde ich gerne öfter bearbeiten.
+
+Die Arbeit mit den Robotern...
+
+[(:gar nicht)(:2)(:3)(:4)(:voll und ganz)]
+    [                                                  ] war interessant.
+    [                                                  ] hat mir Spaß gemacht.
+    [                                                  ] hat mich neugierig auf die weitere Beschäftigung mit den Inhalten der LV gemacht.
+    [                                                  ] hat mich motiviert, mich mit den Inhalten der LV zu beschäftigen.
+    [                                                  ] hat mir gefallen.
+	[                                                  ] würde ich gerne weiterführen.
+
+
+Beurteilen Sie nun bitte folgende Aussagen zu der Aufgabe.
+
+[(:stimme gar nicht zu)(:2)(:3)(:4)(:stimme voll zu)]
+    [                                                  ]Die Inhalte der Aufgabe waren für mich schwierig zu verstehen.
+    [                                                  ]Bei der Bearbeitung der Aufgabe habe ich sehr viel kognitive Anstrengung investiert.
+    [                                                  ]Inhaltlich war die Bearbeitung der Aufgaben für mich sehr anspruchsvoll.
+    [                                                  ]Ich habe mich bei der Bearbeitung der Aufgaben sehr konzentriert.
+    [                                                  ]Die Komplexität der Inhalte war sehr hoch.
+
+
+          
+Hatten Sie Schwierigkeiten bei der Bearbeitung der Aufgabe? Bitte beschreiben Sie diese kurz:
+
+[[___ ___ ___ ___]]
+
+
+Hätten Sie sich an einer bestimmten Stelle Unterstützung gewünscht? Wenn ja, wobei hätten Sie Unterstützung benötigt?
+
+[[___ ___ ___ ___]]
+
+
+Welche Hilfsmittel (z.B. Webseiten etc.) haben Sie bei der Bearbeitung der Aufgabe genutzt? Bitte geben Sie wenn möglich die URL an!
+
+[[___ ___ ___ ___]]
+
+Welche zusätzliche Hilfsmittel für diese Aufgabe sollten bereits im RemoteLab integriert sein?
+
+[[___ ___ ___ ___]]
 
 

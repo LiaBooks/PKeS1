@@ -1,12 +1,12 @@
 #!awk -f
 BEGIN {skip=0;}
 
-/\s*\[\]\(Begin Course A\)/{
+/\s*\[\]\(Begin Remove\)/{
     skip = 1;
     next;
 }
 
-/\s*\[\]\(End Course A\)/{
+/\s*\[\]\(End Remove\)/{
     if(skip >= 1){
         skip -= 1;
         next;
