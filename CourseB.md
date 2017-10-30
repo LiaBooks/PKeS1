@@ -280,6 +280,56 @@ Welches Muster wird auf dem Display dargestellt, wenn die drei Shift-Register di
 [( )] 555
 [( )] 666
 
+## Fragebogen
+Inwiefern stimmen Sie folgenden Aussagen zur Arbeit mit dem RemoteLab zu?
+Die Aufgabe, die mit dem RemoteLab zu bearbeiten, ...
 
+[(:gar nicht)(:2)(:3)(:4)(:voll und ganz)]
+    [                                                  ] war interessant.
+    [                                                  ] hat mir Spaß gemacht.
+    [                                                  ] hat mich neugierig auf die weitere Beschäftigung mit den Inhalten der LV gemacht.
+    [                                                  ] hat mich motiviert, mich mit den Inhalten der LV zu beschäftigen.
+    [                                                  ] hat mir gefallen.
+	[                                                  ] Solche Aufgaben würde ich gerne öfter bearbeiten.
+
+Die Arbeit mit den Robotern...
+
+[(:gar nicht)(:2)(:3)(:4)(:voll und ganz)]
+    [                                                  ] war interessant.
+    [                                                  ] hat mir Spaß gemacht.
+    [                                                  ] hat mich neugierig auf die weitere Beschäftigung mit den Inhalten der LV gemacht.
+    [                                                  ] hat mich motiviert, mich mit den Inhalten der LV zu beschäftigen.
+    [                                                  ] hat mir gefallen.
+	[                                                  ] würde ich gerne weiterführen.
+
+
+Beurteilen Sie nun bitte folgende Aussagen zu der Aufgabe.
+
+[(:stimme gar nicht zu)(:2)(:3)(:4)(:stimme voll zu)]
+    [                                                  ]Die Inhalte der Aufgabe waren für mich schwierig zu verstehen.
+    [                                                  ]Bei der Bearbeitung der Aufgabe habe ich sehr viel kognitive Anstrengung investiert.
+    [                                                  ]Inhaltlich war die Bearbeitung der Aufgaben für mich sehr anspruchsvoll.
+    [                                                  ]Ich habe mich bei der Bearbeitung der Aufgaben sehr konzentriert.
+    [                                                  ]Die Komplexität der Inhalte war sehr hoch.
+
+
+          
+Hatten Sie Schwierigkeiten bei der Bearbeitung der Aufgabe? Bitte beschreiben Sie diese kurz:
+
+[[___ ___ ___ ___]]
+
+
+Hätten Sie sich an einer bestimmten Stelle Unterstützung gewünscht? Wenn ja, wobei hätten Sie Unterstützung benötigt?
+
+[[___ ___ ___ ___]]
+
+
+Welche Hilfsmittel (z.B. Webseiten etc.) haben Sie bei der Bearbeitung der Aufgabe genutzt? Bitte geben Sie wenn möglich die URL an!
+
+[[___ ___ ___ ___]]
+
+Welche zusätzliche Hilfsmittel für diese Aufgabe sollten bereits im RemoteLab integriert sein?
+
+[[___ ___ ___ ___]]
 
 
