@@ -16,6 +16,8 @@ narrator:  Deutsch Female
 
 Willkommen zurück im eLearning-System *eLab*.
 
+**Für diese Aufgabe haben wir die Kurse 1 - PKeS Kurs A und 1 - PKeS Kurs B erstellt. Ihr habt eine E-Mail von uns erhalten, der ihr eure Kurszugehörigkeit entnehmen könnt.**
+
 --{{1}}--
 Da ihr euch während der letzten Aufgabe sowohl mit dem System, als auch mit dem Arbeitsablauf vertraut machen konntet, wird es in dieser Aufgabe darum gehen, tiefer in die Programmierung eingebetteter Systeme einzudringen. 
 
@@ -244,6 +246,23 @@ Welches Muster wird auf dem Display dargestellt, wenn die drei Shift-Register di
 [(X)] 444
 [( )] 555
 [( )] 666
+
+Das Datenblatt des verwendeten Shift-Registers SN54HC595 (RICHTIG?) spezifiziert eine maximale
+Clock-Frequenz für den Betieb unter 25 Grad Celsius. Welche Aussage gilt für die Konfiguration
+des Bauteils, wie sie in den Übungen verwendet wird?
+
+[( )] <36 MHz
+[( )] <31 MHz
+[(X)] < 6 MHz
+
+Laut Datenblatt sollte zwischen dem Schreiben auf der Datenleitung SER und dem steigenden Flankenwechsel
+auf der SRCLK im ungünstigsten Fall eine Zeit von 150 ns vergehen. Wieviele NOP Befehle müssen ausgeführt
+werden, um diese Verzögerung zu generieren. 
+
+[( )] 1 bei einer Taktarte von 8 MHz
+[(X)] 2 
+[( )] 4 
+[( )] 6
 
 ## Fragebogen
 Inwiefern stimmen Sie folgenden Aussagen zur Arbeit mit dem RemoteLab zu?
