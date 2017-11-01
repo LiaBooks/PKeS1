@@ -22,7 +22,7 @@ Willkommen zurück im eLearning-System *eLab*.
 Da ihr euch während der letzten Aufgabe sowohl mit dem System, als auch mit dem Arbeitsablauf vertraut machen konntet, wird es in dieser Aufgabe darum gehen, tiefer in die Programmierung eingebetteter Systeme einzudringen. 
 
 --{{2}}--
-Ein wesentliches Merkmal eingebetteter Systeme ist, dass sie durch periphäre Hardware mit ihrer Umgebung interagieren können. Dafür müssen diese Hardwarekomponenten jedoch in Software repräsentiert und angesprochen werden können. Wie auch bei einem Desktop-Computer, geschieht das durch Treiber.
+Ein wesentliches Merkmal eingebetteter Systeme ist, dass sie durch periphere Hardware mit ihrer Umgebung interagieren können. Dafür müssen diese Hardwarekomponenten jedoch in Software repräsentiert und angesprochen werden können. Wie auch bei einem Desktop-Computer, geschieht das durch Treiber.
 
 --{{3}}--
 Zur Einführung in die Treiberentwicklung eingebetteter Systeme, wird es in dieser Aufgabe darum gehen, drei 8-Segment-Anzeigen anzusteuern und sie durch ein [Application Programming Interface( API)](https://en.wikipedia.org/wiki/Application_programming_interface) nach außen als ein Display darzustellen.
@@ -34,7 +34,7 @@ Zur Einführung in die Treiberentwicklung eingebetteter Systeme, wird es in dies
 Die Themen, die durch die Treiberentwicklung am Beispiel des 8-Segment-Displays adressiert werden sollen, umfassen zunächst die Ansteuern von periphären Geräten, im speziellen aber Shift-Register.
 
 --{{2}}--
-Darüber hinaus soll durch die Treiberentwicklung ein Verständnis für die abstrahierenden Funktionen von Treibern und ihren Beitrag zur Stukturierung von Programmen dargestellt werden. 
+Darüber hinaus soll durch die Treiberentwicklung ein Verständnis für die abstrahierenden Funktionen von Treibern und ihren Beitrag zur Strukturierung von Programmen dargestellt werden. 
 
 --{{3}}--
 Letztlich bietet ein Treiber eine Schnittstelle, die durch weiter Programme genutzt werden kann. Daher wird auch die Thematik einer API angeschnitten werden.
@@ -83,7 +83,7 @@ Da es, je nach Hardware und benötigter Performanz, auch nötig sein kann Assemb
 # Aufgabe 1
 
 --{{1}}--
-In der *ersten* praktischen Aufgabe sollt ihr einen Treiber für das Display unserer Roboterplattform implementieren. Dazu haben wir euch diesesmal lediglich die `Display.h`-Datei vorgegeben, in der einige Funktionen deklariert sind. Es gilt in dieser Aufgabe diese [Application Programming Interface (API)](https://en.wikipedia.org/wiki/Application_programming_interface) zu implementieren.
+In der *ersten* praktischen Aufgabe sollt ihr einen Treiber für das Display unserer Roboterplattform implementieren. Dazu haben wir euch dieses mal lediglich die `Display.h`-Datei vorgegeben, in der einige Funktionen deklariert sind. Es gilt in dieser Aufgabe diese [Application Programming Interface (API)](https://en.wikipedia.org/wiki/Application_programming_interface) zu implementieren.
 
 --{{2}}--
 Wie schon durch Aufgabe *null* bekannt, wird es euch helfen, die Aufgabe in verschiedenen Teilaufgaben zu bearbeiten. 
@@ -92,10 +92,14 @@ Wie schon durch Aufgabe *null* bekannt, wird es euch helfen, die Aufgabe in vers
 In der ersten Teilaufgabe werdet ihr zunächst die Kommunikation zwischen dem Mikrocontroller und dem Display implementieren.
 
 --{{4}}--
-In der zweiten Teilaufgabe werdert ihr die Funktionalität des Treibers vervollständigen, sodass ihr sowohl Gleitkommazahlen, als auch Ganzzahlen auf dem Display darstellen könnt.
+In der zweiten Teilaufgabe werdet ihr die Funktionalität des Treibers vervollständigen, sodass ihr sowohl Gleitkommazahlen, als auch Ganzzahlen auf dem Display darstellen könnt.
 
 --{{5}}--
-Zu letzt werdert ihr den implementierten Treiber nutzen, um vorgegebene Zahlenwerte darzustellen.
+Zuletzt werdet ihr den implementierten Treiber nutzen, um vorgegebene Zahlenwerte darzustellen.
+
+**Hinweis:**
+
+**Verwendet bei der Bearbeitung der Aufgabe keine Funktionen aus der Arduino-Bibliothek. Lediglich die Funktionen der `Serial`-Klasse können zur Ansteuerung der seriellen Schnittstelle genutzt werden.**
 
 **Teilaufgaben:**
 
@@ -136,19 +140,19 @@ Darin müssen die entsprechenden PINs, an denen die 8-Segment-Anzeigen angeschlo
 [](End Remove)
 
 --{{7}}--
-Zu letzt soll eine grundlegende Funktionalität (`writeToDisplay(uint8_t data[3])`) zum Ausgeben von drei Byte implementiert werden. 
+Zuletzt soll eine grundlegende Funktionalität (`writeToDisplay(uint8_t data[3])`) zum Ausgeben von drei Byte implementiert werden. 
 [](Begin Remove)
 Nehmt dabei an, dass die bits der drei Werte des Arrays `data` bereits die richtige Bitreihenfolge beachten. Um eure Funktion zu testen, könnt ihr ein Array mit dem Inhalt `{0b01000010, 0b01000010, 0b01000010}` oder `{0b00011000, 0b00011000, 0b00011000}` übergeben, um eine 1 auszugeben. 
 [](End Remove)
 
 **Ziel:**
 
-Das Ziel in dieser Aufgabe ist es, den Datenfluss, der zur Ansteuerung des Displays notwendig ist, zu verstehen und den Mikrocontroller entsprechend zu konfigurieren. Am Ende der Teilaufgabe sollte es euch dadurch mögich sein, einen von euch gewählten *default*-Wert auf dem Display auszugeben.
+Das Ziel in dieser Aufgabe ist es, den Datenfluss, der zur Ansteuerung des Displays notwendig ist, zu verstehen und den Mikrocontroller entsprechend zu konfigurieren. Am Ende der Teilaufgabe sollte es euch dadurch möglich sein, einen von euch gewählten *default*-Wert auf dem Display auszugeben.
 
 
 **Teilschritte:**
 
-1. Verständniss des Datenflusses. 
+1. Verständnis des Datenflusses. 
 
    [](Begin Remove)
    * Wie wird ein einzelnes Segment angesteuert?
@@ -233,14 +237,14 @@ Wie auch in der letzten Aufgabe, haben wir noch ein paar kurze Fragen an euch, d
 
 ## C/C++
 
-Welche der folgenden Funktionen könnten in einem hypothetischen C Programm parallel zu der Funktion `void fun1(int a)` definiert sein?
+**Welche der folgenden Funktionen könnten in einem hypothetischen C Programm parallel zu der Funktion `void fun1(int a)` definiert sein?**
 
 [[ ]] `int fun1(int a)`
 [[ ]] `void fun1(float a)`
 [[X]] `void fun2(float a)`
 [[ ]] `void fun1(void)`
 
-Welche der folgenden Funktionen könnten in einem hypothetischen C++ Programm parallel zu der Funktion `void fun1(int a)` definiert sein?
+**Welche der folgenden Funktionen könnten in einem hypothetischen C++ Programm parallel zu der Funktion `void fun1(int a)` definiert sein?**
 
 [[ ]] `int fun1(int a)`
 [[X]] `void fun1(float a)`
@@ -252,32 +256,35 @@ Im Gegensatz zu C, können in C++ Funktionen [überladen](https://www.tutorialsp
 
 ]]]
 
+
+**Gegeben sei folgende C-Code Zeile:**
+
+``` c
+A = A & ~(1<<n);
+```
+
+**wobei A ein Controller-Register und n eine integer Zahl zwischen 0 und 7 sei. Welcher Wert steht am Ende in A ...**
+
+[( )] eine 1 am n-ten Bit, alle anderen Werte sind 0
+[( )] überall 0
+[( )] eine 0 am n-ten Bit, alle anderen Werte sind 1
+[(X)] eine 0 am n-ten Bit, alle anderen Werte sind unverändert
+
 ## Shift-Register und 8-Segment-Display
 
-Welche Aussage zu RS- bzw- D-Flip-Flops ist korrekt?
+**Welche Aussage zu RS- bzw- D-Flip-Flops ist korrekt?**
 
 [(X)] Die Ausgänge können in einen unbestimmten Zustand gelangen.
 [( )] RS-Flip-Flops können nur aus NAND-Gattern hergestellt werden.
 [( )] D-Flip-Flops sind immer taktgesteuert.
 
-Warum genügt ein einzelnes D-Flip-Flop im Shift-Register?
-
-[( )] Um die zeitlichen Einschränkungen des Shift-Registers einzuhalten, reicht ein D-Flip-Flop zur Verzögerung aus.
-[(X)] Alle Daten werden durch das erste D-Flip-Flop geleitet. Somit sind alle weiteren RS-Flip-Flops geschützt.
-[( )] Weil es nur einen *Clock*-Eingang gibt.
-[[[
-  
-  Im [Shift-Register](https://www.sparkfun.com/datasheets/IC/SN74HC595.pdf) sind vornehmlich [RS-Flip-Flops](https://www.elektronik-kompendium.de/sites/dig/0209302.htm) verbaut. Diese können jedoch, falls in einem Schritt an beiden Eingängen ein High-Pegel anliegt und im darauffolgenden Schritt an beiden Eingängen ein Low-Pegel anlegt, in einen *unbestimmten* Zustand übergehen. Um diese zu vermeiden, Wird die Datenleitung zunächst durch einen [D-Flip-Flop](https://www.elektronik-kompendium.de/sites/dig/0210031.htm) geleitet. Da dieser keinen *unbestimmten* Zustand annehmen kann, sind die restlichen RS-Flip-Flops durch diesen D-Flip-Flop vor unbestimmten Zuständen *geschützt*.
-
-]]]
-
-Warum wird neben dem *Clock*-Eingang noch ein *Latch*-Eingang für das Shift-Register benötigt?
+**Warum wird neben dem *Clock*-Eingang noch ein *Latch*-Eingang für das Shift-Register benötigt?**
 
 [(X)] Durch den *Latch*-Eingang können die Daten an die Ausgänge des Shift-Registers angelegt werden.
 [( )] Durch den *Latch*-Eingang kann der Inhalt aller Flip-Flops durch ein Steuerungskommando zurückgesetzt werden.
 [( )] Der *Latch*-Eingang ist eine alternative zum *Clock*-Eingang.
 
-Welche Ausgänge des [Shift-Register](https://www.sparkfun.com/datasheets/IC/SN74HC595.pdf) sind nach dem folgenden Timing-Diagramm aktiv? Nehmt an, dass zuvor alle Ausgänge inaktiv(0) waren. (1: aktiv, 0: inaktiv. Reihenfolge: QA, QB, QC, QD, QE, QF, QG, QH)
+**Welche Ausgänge des [Shift-Register](https://www.sparkfun.com/datasheets/IC/SN74HC595.pdf) sind nach dem folgenden Timing-Diagramm aktiv? Nehmt an, dass zuvor alle Ausgänge inaktiv(0) waren. (1: aktiv, 0: inaktiv. Reihenfolge: QA, QB, QC, QD, QE, QF, QG, QH)**
 
 ![Timin1](https://raw.githubusercontent.com/liaScript/PKeS1/master/materials/timing_1.png)
 
@@ -298,32 +305,34 @@ Welche Ausgänge des [Shift-Register](https://www.sparkfun.com/datasheets/IC/SN7
 [( )] (00010000)
 
  
-Welches Muster wird auf dem Display dargestellt, wenn die drei Shift-Register die Werte `0b01001011`, `0b01001011` und `0b01001011` beinhalten?
+**Welches Muster wird auf dem Display dargestellt, wenn die drei Shift-Register die Werte `0b01001011`, `0b01001011` und `0b01001011` beinhalten?**
 
 [(X)] 444
 [( )] 555
 [( )] 666
 
-Das Datenblatt des verwendeten Shift-Registers SN54HC595 (RICHTIG?) spezifiziert eine maximale
-Clock-Frequenz für den Betieb unter 25 Grad Celsius. Welche Aussage gilt für die Konfiguration
-des Bauteils, wie sie in den Übungen verwendet wird?
+**Das Datenblatt des verwendeten Shift-Registers SN54HC595 (RICHTIG?) spezifiziert eine maximale Clock-Frequenz für den Betrieb unter 25 Grad Celsius. Welche Aussage gilt für die Konfiguration des Bauteils, wie sie in den Übungen verwendet wird?**
 
 [( )] <36 MHz
 [( )] <31 MHz
 [(X)] < 6 MHz
 
-Laut Datenblatt sollte zwischen dem Schreiben auf der Datenleitung SER und dem steigenden Flankenwechsel
-auf der SRCLK im ungünstigsten Fall eine Zeit von 150 ns vergehen. Wieviele NOP Befehle müssen ausgeführt
-werden, um diese Verzögerung zu generieren. 
+**Laut Datenblatt sollte zwischen dem Schreiben auf der Datenleitung SER und dem steigenden Flankenwechsel auf der SRCLK im ungünstigsten Fall eine Zeit von 150 ns vergehen. Wie viele NOP Befehle müssen ausgeführt werden, um diese Verzögerung zu generieren.**
 
-[( )] 1 bei einer Taktarte von 8 MHz
+[( )] 1 bei einer Taktrate von 8 MHz
 [(X)] 2 
 [( )] 4 
 [( )] 6
 
+**Welche der folgenden Aussagen gilt NICHT als Merkmal von RISC Controller im Vergleich mit CISC-Systemen:**
+
+[( )] kleinere Befehlssatz
+[(X)] komplexere Befehle 
+[( )] meist Load/Store Architekturen
+[( )] extrem schnell auszuführenden Befehle
+
 ## Fragebogen
-Inwiefern stimmen Sie folgenden Aussagen zur Arbeit mit dem RemoteLab zu?
-Die Aufgabe, die mit dem RemoteLab zu bearbeiten, ...
+**Inwiefern stimmen Sie folgenden Aussagen zur Arbeit mit dem RemoteLab zu? Die Aufgabe, die mit dem RemoteLab zu bearbeiten, ...**
 
 [(:gar nicht)(:2)(:3)(:4)(:voll und ganz)]
     [                                                  ] war interessant.
@@ -333,7 +342,7 @@ Die Aufgabe, die mit dem RemoteLab zu bearbeiten, ...
     [                                                  ] hat mir gefallen.
 	[                                                  ] Solche Aufgaben würde ich gerne öfter bearbeiten.
 
-Die Arbeit mit den Robotern...
+**Die Arbeit mit den Robotern...**
 
 [(:gar nicht)(:2)(:3)(:4)(:voll und ganz)]
     [                                                  ] war interessant.
@@ -344,7 +353,7 @@ Die Arbeit mit den Robotern...
 	[                                                  ] würde ich gerne weiterführen.
 
 
-Beurteilen Sie nun bitte folgende Aussagen zu der Aufgabe.
+**Beurteilen Sie nun bitte folgende Aussagen zu der Aufgabe.**
 
 [(:stimme gar nicht zu)(:2)(:3)(:4)(:stimme voll zu)]
     [                                                  ]Die Inhalte der Aufgabe waren für mich schwierig zu verstehen.
@@ -355,22 +364,21 @@ Beurteilen Sie nun bitte folgende Aussagen zu der Aufgabe.
 
 
           
-Hatten Sie Schwierigkeiten bei der Bearbeitung der Aufgabe? Bitte beschreiben Sie diese kurz:
+**Hatten Sie Schwierigkeiten bei der Bearbeitung der Aufgabe? Bitte beschreiben Sie diese kurz:**
 
 [[___ ___ ___ ___]]
 
 
-Hätten Sie sich an einer bestimmten Stelle Unterstützung gewünscht? Wenn ja, wobei hätten Sie Unterstützung benötigt?
+**Hätten Sie sich an einer bestimmten Stelle Unterstützung gewünscht? Wenn ja, wobei hätten Sie Unterstützung benötigt?**
 
 [[___ ___ ___ ___]]
 
 
-Welche Hilfsmittel (z.B. Webseiten etc.) haben Sie bei der Bearbeitung der Aufgabe genutzt? Bitte geben Sie wenn möglich die URL an!
+**Welche Hilfsmittel (z.B. Webseiten etc.) haben Sie bei der Bearbeitung der Aufgabe genutzt? Bitte geben Sie wenn möglich die URL an!**
 
 [[___ ___ ___ ___]]
 
-Welche zusätzliche Hilfsmittel für diese Aufgabe sollten bereits im RemoteLab integriert sein?
+**Welche zusätzliche Hilfsmittel für diese Aufgabe sollten bereits im RemoteLab integriert sein?**
 
 [[___ ___ ___ ___]]
-
 
