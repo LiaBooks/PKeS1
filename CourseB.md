@@ -332,7 +332,12 @@ A = A & ~(1<<n);
 [( )] extrem schnell auszuführenden Befehle
 
 ## Fragebogen
-**Inwiefern stimmen Sie folgenden Aussagen zur Arbeit mit dem RemoteLab zu? Die Aufgabe, die mit dem RemoteLab zu bearbeiten, ...**
+
+Nachdem Sie nun bereits die ersten beiden Aufgaben (Übung 0 und Übung 1) bearbeitet haben, möchten wir Sie um eine kurze Einschätzung zur Aufgabe für Übung 1 bitten. 
+
+**Inwiefern stimmen Sie folgenden Aussagen zur Arbeit mit dem Remote Lab zu?**
+
+**Die Aufgabe, die in Übung 1 mit dem RemoteLab zu bearbeiten war, ...**
 
 [(:gar nicht)(:2)(:3)(:4)(:voll und ganz)]
     [                                                  ] war interessant.
@@ -342,25 +347,41 @@ A = A & ~(1<<n);
     [                                                  ] hat mir gefallen.
 	[                                                  ] Solche Aufgaben würde ich gerne öfter bearbeiten.
 
-**Die Arbeit mit den Robotern...**
 
-[(:gar nicht)(:2)(:3)(:4)(:voll und ganz)]
-    [                                                  ] war interessant.
-    [                                                  ] hat mir Spaß gemacht.
-    [                                                  ] hat mich neugierig auf die weitere Beschäftigung mit den Inhalten der LV gemacht.
-    [                                                  ] hat mich motiviert, mich mit den Inhalten der LV zu beschäftigen.
-    [                                                  ] hat mir gefallen.
-	[                                                  ] würde ich gerne weiterführen.
+[(:Stimme gar nicht zu)(:2)(:3)(:4)(:Stimme voll zu)]
+    [                                                  ] Inhaltlich war die Aufgabe sehr komplex.
+    [                                                  ] Das Problem, welches es zu lösen galt, war sehr schwierig.
+    [                                                  ] In der Aufgabe wurden sehr komplizierte Konzepte behandelt.
+    [                                                  ] Ich habe sehr viel kognitive Anstrengung investiert, um mit der Komplexität der Inhalte umzugehen.
+    [                                                  ] Die Aufgabenstellungen und Erklärungen in der Aufgabe waren schwer verständlich formuliert.
+	[                                                  ] Die Aufgabenstellungen und Erklärungen waren für das Lernen ineffektiv.
+    [                                                  ] Ich habe sehr viel kognitive Anstrengung investiert, um unklare Aufgabenstellungen und Erklärungen zu verstehen.
+    [                                                  ] Diese Aufgabe hat wirklich dazu beigetragen, dass ich die Inhalte, die behandelt wurden, besser verstanden habe.
+    [                                                  ] Die Aufgabe hat mich dabei unterstützt, die übergeordneten Problemstellungen zu verstehen.
+    [                                                  ] Die Aufgabe hat mein Wissen über die zugrundeliegenden Konzepte verbessert.
+    [                                                  ] Ich weiß nun sehr viel besser, wie solche Problemstellungen zu behandeln sind.
+	[                                                  ] Ich habe sehr viel kognitive Anstrengung investiert, um die Inhalte besser zu verstehen.
 
 
-**Beurteilen Sie nun bitte folgende Aussagen zu der Aufgabe.**
+ **Inwieweit stimmen Sie den folgenden Aussagen zur Bedienung des Remote Lab-Systems zu?**
 
 [(:stimme gar nicht zu)(:2)(:3)(:4)(:stimme voll zu)]
-    [                                                  ]Die Inhalte der Aufgabe waren für mich schwierig zu verstehen.
-    [                                                  ]Bei der Bearbeitung der Aufgabe habe ich sehr viel kognitive Anstrengung investiert.
-    [                                                  ]Inhaltlich war die Bearbeitung der Aufgaben für mich sehr anspruchsvoll.
-    [                                                  ]Ich habe mich bei der Bearbeitung der Aufgaben sehr konzentriert.
-    [                                                  ]Die Komplexität der Inhalte war sehr hoch.
+    [                                                  ] Das System ist unhandlich zu bedienen.
+    [                                                  ] Die Oberfläche des Remote Labs ist hilfreich strukturiert.
+    [                                                  ] Es ist einfach die Bedienung des Remote Lab-Systems zu erlernen.
+    [                                                  ] Mit dem System zu arbeiten, ist oft frustrierend.
+    [                                                  ] Die Arbeitsschritte im Remote Lab sind einprägsam, ich habe keine Schwierigkeiten mich an diese zu erinnern.
+	[                                                  ] Die Bedienung des Remote Lab ist intuitiv.
+    [                                                  ] Mit dem Remote Lab-System zu arbeiten, erfordert (unabhängig von den konkreten Lernaufgaben) ein hohes Maß an geistiger Anstrengung.
+    [                                                  ] Die Interaktion mit dem Remote Lab-System ist klar und verständlich.
+    [                                                  ] Das Remote Lab gibt klare und verständliche Rückmeldungen.
+    [                                                  ] Die Fehlermeldungen des Remote Labs sind bei der Lösung von Problemen hilfreich.	
+    [                                                  ] Es hat mich einige Anstrengung gekostet, zu verstehen, wie das System funktioniert.
+    [                                                  ] Ich finde, dass das Remote Lab-System insgesamt einfach zu bedienen ist.
+	[                                                  ] Für mich war die Nutzung des Remote Labs selbsterklärend.
+    [                                                  ] Das Remote Lab hat zuverlässig funktioniert.
+    [                                                  ] Die Roboter haben zuverlässig funktioniert.
+
 
 
           
@@ -382,3 +403,17 @@ A = A & ~(1<<n);
 
 [[___ ___ ___ ___]]
 
+
+**Welcher Gruppe waren Sie bei der Bearbeitung der Aufgabe in Übung 1 zugeordnet?**
+
+[(1)] 1 - PKeS Kurs A
+[(2)] 1 - PKeS Kurs B
+
+**Haben Sie die Gruppe während der Bearbeitungszeit gewechselt?**
+
+[(1)] Ja
+[(2)] Nein
+
+**Wenn ja, warum? ...**
+
+[[___ ___ ___ ___]]
