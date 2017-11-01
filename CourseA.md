@@ -219,17 +219,22 @@ Im Gegensatz zu C, können in C++ Funktionen [überladen](https://www.tutorialsp
 
 ## Shift-Register und 8-Segment-Display
 
-Welche Aussage gilt nur für RS-Flip-Flops, nicht aber für D-Flip-Flops
+Welche Aussage zu RS- bzw- D-Flip-Flops ist korrekt?
 
-[(X)] Die Ausgänge können in einen unbestimmten Zustand gelangen
-[( )] 
-[( )] 
+[(X)] Die Ausgänge können in einen unbestimmten Zustand gelangen.
+[( )] RS-Flip-Flops können nur aus NAND-Gattern hergestellt werden.
+[( )] D-Flip-Flops sind immer taktgesteuert.
 
 Warum genügt ein einzelnes D-Flip-Flop im Shift-Register?
 
-[(X)] Alle Daten werden durch das erste D-Flip-Flop geleitet. Somit sind alle weiteren RS-Flip-Flops geschützt.
 [( )] Um die zeitlichen Einschränkungen des Shift-Registers einzuhalten, reicht ein D-Flip-Flop zur Verzögerung aus.
-[( )] 
+[(X)] Alle Daten werden durch das erste D-Flip-Flop geleitet. Somit sind alle weiteren RS-Flip-Flops geschützt.
+[( )] Weil es nur einen *Clock*-Eingang gibt.
+[[[
+  
+  Im [Shift-Register](https://www.sparkfun.com/datasheets/IC/SN74HC595.pdf) sind vornehmlich [RS-Flip-Flops](https://www.elektronik-kompendium.de/sites/dig/0209302.htm) verbaut. Diese können jedoch, falls in einem Schritt an beiden Eingängen ein High-Pegel anliegt und im darauffolgenden Schritt an beiden Eingängen ein Low-Pegel anlegt, in einen *unbestimmten* Zustand übergehen. Um diese zu vermeiden, Wird die Datenleitung zunächst durch einen [D-Flip-Flop](https://www.elektronik-kompendium.de/sites/dig/0210031.htm) geleitet. Da dieser keinen *unbestimmten* Zustand annehmen kann, sind die restlichen RS-Flip-Flops durch diesen D-Flip-Flop vor unbestimmten Zuständen *geschützt*.
+
+]]]
 
 Warum wird neben dem *Clock*-Eingang noch ein *Latch*-Eingang für das Shift-Register benötigt?
 
@@ -237,8 +242,25 @@ Warum wird neben dem *Clock*-Eingang noch ein *Latch*-Eingang für das Shift-Reg
 [( )] Durch den *Latch*-Eingang kann der Inhalt aller Flip-Flops durch ein Steuerungskommando zurückgesetzt werden.
 [( )] Der *Latch*-Eingang ist eine alternative zum *Clock*-Eingang.
 
-Welche Ausgänge eines Shift-Registerns sind nach dem folgenden Timing-Diagramm aktiv?
-TODO Show draw diagramm and according choices
+Welche Ausgänge des [Shift-Register](https://www.sparkfun.com/datasheets/IC/SN74HC595.pdf) sind nach dem folgenden Timing-Diagramm aktiv? Nehmt an, dass zuvor alle Ausgänge inaktiv(0) waren. (1: aktiv, 0: inaktiv. Reihenfolge: QA, QB, QC, QD, QE, QF, QG, QH)
+
+![Timin1](https://raw.githubusercontent.com/liaScript/PKeS1/master/materials/timing_1.png)
+
+[( )] (00100001)
+[( )] (10010000)
+[(X)] (00010000)
+
+![Timin2](https://raw.githubusercontent.com/liaScript/PKeS1/master/materials/timing_2.png)
+
+[( )] (00000000)
+[( )] (10100001)
+[(X)] (01010000)
+
+![Timin3](https://raw.githubusercontent.com/liaScript/PKeS1/master/materials/timing_3.png)
+
+[( )] (00100000)
+[(X)] (00000000)
+[( )] (00010000)
 
  
 Welches Muster wird auf dem Display dargestellt, wenn die drei Shift-Register die Werte `0b01001011`, `0b01001011` und `0b01001011` beinhalten?

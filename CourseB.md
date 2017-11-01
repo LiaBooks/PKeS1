@@ -277,21 +277,21 @@ Warum wird neben dem *Clock*-Eingang noch ein *Latch*-Eingang für das Shift-Reg
 [( )] Durch den *Latch*-Eingang kann der Inhalt aller Flip-Flops durch ein Steuerungskommando zurückgesetzt werden.
 [( )] Der *Latch*-Eingang ist eine alternative zum *Clock*-Eingang.
 
-Welche Ausgänge des Shift-Registers sind nach dem folgenden Timing-Diagramm aktiv? Nehmt an, dass zuvor alle Ausgänge inaktiv(0) waren. (1: aktiv, 0: inaktiv. Reihenfolge: QA, QB, QC, QD, QE, QF, QG, QH)
+Welche Ausgänge des [Shift-Register](https://www.sparkfun.com/datasheets/IC/SN74HC595.pdf) sind nach dem folgenden Timing-Diagramm aktiv? Nehmt an, dass zuvor alle Ausgänge inaktiv(0) waren. (1: aktiv, 0: inaktiv. Reihenfolge: QA, QB, QC, QD, QE, QF, QG, QH)
 
-![Timin1]()
+![Timin1](https://raw.githubusercontent.com/liaScript/PKeS1/master/materials/timing_1.png)
 
 [( )] (00100001)
 [( )] (10010000)
 [(X)] (00010000)
 
-![Timin2]()
+![Timin2](https://raw.githubusercontent.com/liaScript/PKeS1/master/materials/timing_2.png)
 
 [( )] (00000000)
 [( )] (10100001)
 [(X)] (01010000)
 
-![Timin3]()
+![Timin3](https://raw.githubusercontent.com/liaScript/PKeS1/master/materials/timing_3.png)
 
 [( )] (00100000)
 [(X)] (00000000)
