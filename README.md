@@ -70,7 +70,7 @@ send.service("@0arduino", {start: "CodeRunner", settings: null})
 .receive("ok", e => {
 
 		send.lia("output", e.message);
-		send.service("@0arduino", {files: {"sketch/sketch.ino": `@input(0)`, "sketch/Display.h": `@input(1)`, "sketch/Display.cpp": `@input(2)` "build/": ""}})
+		send.service("@0arduino", {files: {"sketch/sketch.ino": `@input(0)`, "sketch/Display.h": `@input(1)`, "sketch/Display.cpp": `@input(2)`, "build/": ""}})
 		.receive("ok", e => {
 
 				send.lia("output", e.message);
