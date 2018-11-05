@@ -57,6 +57,9 @@ send.service("@0", {start: "CodeRunner", settings: null})
 
 
 
+
+
+
 @sketch
 <script>
 events.register("mc_stdout", e => { send.lia("output", e); });
@@ -387,8 +390,6 @@ else {
 
 # PKeS1: Treiber
 
-@init_clear
-
 Willkommen zurück im eLearning-System *eLab*.
 
 
@@ -414,8 +415,6 @@ nach außen als ein Display darzustellen.
 
 
 ## Themen und Ziele
-
-@init_clear
 
 
     --{{1}}--
@@ -447,8 +446,6 @@ werden.
 * {{3}} Implementierung entsprechend einer gegebenen API
 
 ## Weitere Informationen
-
-@init_clear
 
 
     --{{0}}--
@@ -499,8 +496,6 @@ Erläuterung zum Shift-Operator.
 
 # Aufgabe
 
-@init_clear
-
 
     --{{0}}--
 In der *ersten* praktischen Aufgabe sollt ihr einen Treiber für das Display
@@ -539,8 +534,6 @@ Zahlenwerte darzustellen.
 > Ansteuerung der seriellen Schnittstelle genutzt werden.
 
 ## Teilaufgabe 1
-
-@init_clear
 
 
     --{{0}}--
@@ -639,8 +632,6 @@ Um eure Funktion zu testen, könnt ihr ein Array mit dem Inhalt {`0b01000010`,
 
 ## Teilaufgabe 2
 
-@init_clear
-
 
     --{{0}}--
 In der letzten Teilaufgabe haben wir eine grundlegende Funktionalität zur
@@ -699,8 +690,6 @@ Gleitkommazahl entsprechend der Ansteuerung des Displays.
 *******************************************************************************
 
 ## Teilaufgabe 3
-
-@init_clear
 
 
     --{{0}}--
@@ -911,8 +900,6 @@ void writeValueToDisplay(float value);
 
 # Prüfe dein Wissen
 
-@init_clear
-
 
     --{{0}}--
 Wie auch in der letzten Aufgabe, haben wir noch ein paar kurze Fragen an euch,
@@ -964,8 +951,6 @@ sei. Welcher Wert steht am Ende in `A` ...
 
 ## Shift-Register und 8-Segment-Display
 
-@init_clear
-
 
 Welche Aussage zu RS- bzw- D-Flip-Flops ist korrekt?
 
@@ -983,8 +968,6 @@ Shift-Register benötigt?
     [( )] Der *Latch*-Eingang ist eine alternative zum *Clock*-Eingang.
 
 ### Timing Diagramm 1
-
-@init_clear
 
 
 Welche Ausgänge des
@@ -1015,8 +998,6 @@ QG, QH)
 
 ### Timing Diagramm 2
 
-@init_clear
-
 
 Welche Ausgänge des
 [Shift-Register](https://www.sparkfun.com/datasheets/IC/SN74HC595.pdf) sind nach
@@ -1043,8 +1024,6 @@ QG, QH)
     [(X)] (01010000)
 
 ### Timing Diagramm 3
-
-@init_clear
 
 
 Welche Ausgänge des
@@ -1073,8 +1052,6 @@ QG, QH)
 
 ### Muster
 
-@init_clear
-
 
 Welches Muster wird auf dem Display dargestellt, wenn die drei Shift-Register
 die Werte `0b01001011`, `0b01001011` und `0b01001011` beinhalten?
@@ -1084,8 +1061,6 @@ die Werte `0b01001011`, `0b01001011` und `0b01001011` beinhalten?
     [( )] 666
 
 ### Datenblatt
-
-@init_clear
 
 
 Das Datenblatt des verwendeten Shift-Registers SN54HC595 (RICHTIG?) spezifiziert
@@ -1121,15 +1096,10 @@ Vergleich mit CISC-Systemen:
 
 # Umfrage
 
-@init_clear
-
 
 Todo
 
 # Der Schift-Operator
-
-@init_clear
-
 
 Auszug aus dem Wikibuch _C-Programmierung_ ...
 
@@ -1202,8 +1172,6 @@ geschaltet werden. Man erspart sich hierbei mehrere Taktzyklen des Prozessors.
 
 ## Linksshift `<<`
 
-@init_clear
-
 
 Verschiebt den Inhalt einer Variable bitweise nach links. Bei einer ganzen nicht
 negativen Zahl entspricht eine Verschiebung einer Multiplikation mit 2n, wobei n
@@ -1222,8 +1190,6 @@ Beispiel:
 | 01010111 | 10101110 |
 
 ## Rechtsshift `>>`
-
-@init_clear
 
 
 Verschiebt den Inhalt einer Variable bitweise nach rechts. Bei einer ganzen,
