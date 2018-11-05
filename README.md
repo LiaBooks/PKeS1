@@ -73,16 +73,18 @@ send.service("@0arduino", {start: "CodeRunner", settings: null})
 .receive("ok", e => {
 
 		send.lia("output", e.message);
-		send.service("@0arduino", {files: {"sketch/sketch.ino": `@input(0)`, "sketch/Display.h": `@input(1)`, "sketch/Display.cpp": `@input(2)`, "build/": ""}})
+		send.service("@0arduino", {files: {"sketch/sketch.ino": `@input`, "build/": ""}})
 		.receive("ok", e => {
 
 				send.lia("output", e.message);
-				send.service("@0arduino",  {compile: compile, order: ["sketch.ino", "Display.h", "Display.cpp"]})
+				send.service("@0arduino",  {compile: compile, order: ["sketch.ino"]})
 				.receive("ok", e => {
 
 						send.lia("log", e.message, e.details, true);
             if(!window["bot_selected"]) { send.lia("eval", "LIA: stop"); }
             else {
+
+              document.getElementById("button_"+window.bot_selected).disabled = true;
               send.service("c",
                 { connect: [["@0arduino", {"get_path": "build/sketch.ino.hex"}], ["mc", {"upload": null, "target": window["bot_selected"]}]]
                 }
@@ -94,6 +96,8 @@ send.service("@0arduino", {start: "CodeRunner", settings: null})
                            params: {procedure: "com.robulab.target."+window["bot_selected"]+".send_input", args: [0,  String.fromCharCode(0)+btoa(e) ] }})});
 
               send.handle("stop",  (e) => {
+                document.getElementById("button_"+window.bot_selected).disabled = false;
+
                 send.service("mc", {id: "stdio0",
                                    action: "unsubscribe",
                                    params: {id: window["stdio0"], args: [] }});
@@ -105,6 +109,10 @@ send.service("@0arduino", {start: "CodeRunner", settings: null})
                 send.service("mc",  {id: "bot_disconnect."+window["bot_selected"],
                            action: "call",
                            params: {procedure: "com.robulab.target.disconnect", args: [window["bot_selected"]] }})});
+
+
+                delete window.stdio0;
+                delete window.stdio1;
             }
 				})
 				.receive("error", e => { send.lia("log", e.message, e.details, false); send.lia("eval", "LIA: stop"); });
@@ -207,7 +215,11 @@ function subscriptions() {
           return;
 
        if(!!e.subscription) {
-         if (e.subscription == "com.robulab.target.changed") {
+         if (e.subscription.startsWith("com.robulab.livestream")) {
+            //console.log("vid", e.parameters.args[0].data);
+            window.cam.PutData(new Uint8Array(e.parameters.args[0].data));
+         }
+         else if (e.subscription == "com.robulab.target.changed") {
            let args = e.parameters.args;
            for(let i=0; i<args.length; i++) {
              for(let j=0; j<window.bot_list.length; j++) {
@@ -222,6 +234,9 @@ function subscriptions() {
          } else if (e.subscription.endsWith(".1.raw_out")) {
            window["arduino_view_frame"].contentWindow.ArduinoView.onArduinoViewMessage(
              String.fromCharCode.apply(this, e.parameters.args[0].data) );
+         }
+         else {
+          //console.log("problem", e);
          }
        }
        else if(e.id == "bot_list") {
@@ -294,7 +309,19 @@ function subscriptions() {
                          action: "call",
                          params: {procedure: "com.robulab.target.disconnect", args: [target] }});
           };
+
+          send.service("mc", {id: "bot_stream."+target,
+                     action: "call",
+                     params: {procedure: "com.robulab.target."+target+".get_stream", args: [target] }});
+
           update();
+
+          window["cam"] = window.decoder(document.getElementById("bot_show"), ([w, h]) => {
+              let canvas = document.getElementById("bot_show");
+
+              canvas.height = h;
+              canvas.width = w;
+          });
         }
         else if( e.id.startsWith("bot_disconnect") ) {
           let [cmd, target] = e.id.split(".");
@@ -306,8 +333,31 @@ function subscriptions() {
                          action: "call",
                          params: {procedure: "com.robulab.target.connect", args: [target] }});
           };
+
+          send.service("mc", {id: "cam_disconnect",
+                             action: "unsubscribe",
+                             params: {id: window["streaming_id"], args: [] }});
+
           update();
         }
+        else if ( e.id.startsWith("bot_stream") ) {
+          let [cmd, target] = e.id.split(".");
+          send.service("mc",
+                       {id: "streaming",
+                        action: "subscribe",
+                        params: {topic: e.ok.url, args: [] }});
+        }
+        else if (e.id == "streaming") {
+          window["streaming_id"] = e.ok.id;
+        }
+
+        else if ( e.id == "cam_disconnect") {
+          delete window.cam;
+        }
+
+        else {
+          console.log("not handled", e);
+      }
       });
 
       send.service("mc", {id: "bot_list",
@@ -352,15 +402,44 @@ else {
   update();
 }
 
+window.addEventListener("beforeunload", function (event) {
+
+    if ( window.stdio1 ) {
+          send.service("mc", {id: "stdio1",
+                       action: "unsubscribe",
+                       params: {id: window["stdio1"], args: [] }});
+    }
+
+    if ( window.stdio0 ) {
+          send.service("mc", {id: "stdio0",
+                       action: "unsubscribe",
+                       params: {id: window["stdio0"], args: [] }});
+    }
+
+    if(window.bot_selected) {
+        send.service("mc", {id: "cam_disconnect",
+                           action: "unsubscribe",
+                           params: {id: window["streaming_id"], args: [] }});
+
+        send.service("mc",  {id: "bot_disconnect."+window["bot_selected"],
+                   action: "call",
+                   params: {procedure: "com.robulab.target.disconnect", args: [window["bot_selected"]] }});
+    }
+
+});
+
 </script>
 
 
 <div id="mcInterface" hidden="true">
-  <span id="bot_list" ></span>
-
-  <span id="canvas" ></span>
-
-  <iframe id="arduinoviewer" style="width: 100%; min-height: 360px;" src="https://elab.ovgu.robulab.com/arduinoview"></iframe>
+  <span style="border-style: solid; width: 49.5%; float: left; min-width: 480px;">
+    <span id="bot_list" ></span>
+    <br>
+    <iframe id="arduinoviewer" style="margin-left: 3px; width: 99%; max-height: 432px;" src="https://elab.ovgu.robulab.com/arduinoview"></iframe>
+  </span>
+  <span style="border-style: solid; width: 49.5%; height: 480px; float: right; min-width: 480px; overflow: auto">
+    <canvas id="bot_show" style="width: calc(16 * 10vw); height: calc(9 * 10vw);"></canvas>
+  </span>
 </div>
 @end
 
@@ -377,18 +456,38 @@ else {
     //  viewer.contentWindow.document.body.innerHTML = ""
     } catch(e) {}
 
+  if ( window.stdio1 ) {
+          send.service("mc", {id: "stdio1",
+                       action: "unsubscribe",
+                       params: {id: window["stdio1"], args: [] }});
+  }
+
+  if ( window.stdio0 ) {
+          send.service("mc", {id: "stdio0",
+                       action: "unsubscribe",
+                       params: {id: window["stdio0"], args: [] }});
+  }
+
   if(window.bot_selected) {
-    send.service("mc", {id: "bot_disconnect."+window.bot_selected,
-             action: "call",
-             params: {procedure: "com.robulab.target.disconnect", args: [window.bot_selected] }});
+        send.service("mc", {id: "cam_disconnect",
+                           action: "unsubscribe",
+                           params: {id: window["streaming_id"], args: [] }});
+
+        send.service("mc",  {id: "bot_disconnect."+window["bot_selected"],
+                   action: "call",
+                   params: {procedure: "com.robulab.target.disconnect", args: [window["bot_selected"]] }});
   }
 </script>
+
+
 @end
 
 
 -->
 
 # PKeS1: Treiber
+
+@init_clear
 
 Willkommen zurück im eLearning-System *eLab*.
 
@@ -416,6 +515,7 @@ nach außen als ein Display darzustellen.
 
 ## Themen und Ziele
 
+@init_clear
 
     --{{1}}--
 Die Themen, die durch die Treiberentwicklung am Beispiel des 8-Segment-Displays
@@ -447,6 +547,7 @@ werden.
 
 ## Weitere Informationen
 
+@init_clear
 
     --{{0}}--
 Wie immer möchten wir euch weitere Hintergrundinformationen um das Thema Treiber
@@ -496,6 +597,7 @@ Erläuterung zum Shift-Operator.
 
 # Aufgabe
 
+@init_clear
 
     --{{0}}--
 In der *ersten* praktischen Aufgabe sollt ihr einen Treiber für das Display
@@ -535,6 +637,7 @@ Zahlenwerte darzustellen.
 
 ## Teilaufgabe 1
 
+@init_clear
 
     --{{0}}--
 In dieser Teilaufgabe sollt ihr zunächst den Fluss der Daten vom Mikrocontroller
@@ -632,6 +735,7 @@ Um eure Funktion zu testen, könnt ihr ein Array mit dem Inhalt {`0b01000010`,
 
 ## Teilaufgabe 2
 
+@init_clear
 
     --{{0}}--
 In der letzten Teilaufgabe haben wir eine grundlegende Funktionalität zur
@@ -690,6 +794,8 @@ Gleitkommazahl entsprechend der Ansteuerung des Displays.
 *******************************************************************************
 
 ## Teilaufgabe 3
+
+@init_clear
 
 
     --{{0}}--
@@ -900,12 +1006,16 @@ void writeValueToDisplay(float value);
 
 # Prüfe dein Wissen
 
+@init_clear
+
 
     --{{0}}--
 Wie auch in der letzten Aufgabe, haben wir noch ein paar kurze Fragen an euch,
 die ihr in Vorbereitung der Abgabe der Aufgabe bei den Tutoren klären solltet.
 
 ## C/C++
+
+@init_clear
 
 Welche der folgenden Funktionen könnten in einem hypothetischen C Programm
 parallel zu der Funktion `void fun1(int a)` definiert sein?
@@ -951,6 +1061,7 @@ sei. Welcher Wert steht am Ende in `A` ...
 
 ## Shift-Register und 8-Segment-Display
 
+@init_clear
 
 Welche Aussage zu RS- bzw- D-Flip-Flops ist korrekt?
 
@@ -969,6 +1080,7 @@ Shift-Register benötigt?
 
 ### Timing Diagramm 1
 
+@init_clear
 
 Welche Ausgänge des
 [Shift-Register](https://www.sparkfun.com/datasheets/IC/SN74HC595.pdf) sind nach
@@ -998,6 +1110,7 @@ QG, QH)
 
 ### Timing Diagramm 2
 
+@init_clear
 
 Welche Ausgänge des
 [Shift-Register](https://www.sparkfun.com/datasheets/IC/SN74HC595.pdf) sind nach
@@ -1025,6 +1138,7 @@ QG, QH)
 
 ### Timing Diagramm 3
 
+@init_clear
 
 Welche Ausgänge des
 [Shift-Register](https://www.sparkfun.com/datasheets/IC/SN74HC595.pdf) sind nach
@@ -1052,6 +1166,7 @@ QG, QH)
 
 ### Muster
 
+@init_clear
 
 Welches Muster wird auf dem Display dargestellt, wenn die drei Shift-Register
 die Werte `0b01001011`, `0b01001011` und `0b01001011` beinhalten?
@@ -1062,6 +1177,7 @@ die Werte `0b01001011`, `0b01001011` und `0b01001011` beinhalten?
 
 ### Datenblatt
 
+@init_clear
 
 Das Datenblatt des verwendeten Shift-Registers SN54HC595 (RICHTIG?) spezifiziert
 eine maximale Clock-Frequenz für den Betrieb unter 25 Grad Celsius. Welche
@@ -1096,10 +1212,13 @@ Vergleich mit CISC-Systemen:
 
 # Umfrage
 
+@init_clear
 
 Todo
 
 # Der Schift-Operator
+
+@init_clear
 
 Auszug aus dem Wikibuch _C-Programmierung_ ...
 
@@ -1172,6 +1291,8 @@ geschaltet werden. Man erspart sich hierbei mehrere Taktzyklen des Prozessors.
 
 ## Linksshift `<<`
 
+@init_clear
+
 
 Verschiebt den Inhalt einer Variable bitweise nach links. Bei einer ganzen nicht
 negativen Zahl entspricht eine Verschiebung einer Multiplikation mit 2n, wobei n
@@ -1190,6 +1311,8 @@ Beispiel:
 | 01010111 | 10101110 |
 
 ## Rechtsshift `>>`
+
+@init_clear
 
 
 Verschiebt den Inhalt einer Variable bitweise nach rechts. Bei einer ganzen,
