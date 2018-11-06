@@ -841,7 +841,7 @@ Display auszugeben.
 {{2}} Zeigt die Ganz- und Gleitkommazahlen, die durch den Slider vorgegeben
 werden, auf dem Display an.
 
-# **Pogrammierung**
+# **Programmierung**
 
 ``` cpp sketch.ino
 // -----------------------------------------------------------------
